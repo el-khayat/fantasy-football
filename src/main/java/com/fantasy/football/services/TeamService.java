@@ -29,6 +29,8 @@ public class TeamService {
     public void deleteById(Long id){
         teamRepository.deleteById(id);
     }
-
+    public List<Team> getTeamByCountry(String country){
+        return  teamRepository.getTeamByCountry(country);
+    }
 
 }

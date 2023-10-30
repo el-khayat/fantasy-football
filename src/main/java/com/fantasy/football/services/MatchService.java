@@ -7,6 +7,8 @@ import com.fantasy.football.repositories.PlayerRepositories;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -31,6 +33,18 @@ public class MatchService {
     public void deleteById(Long id){
         matchRepository.deleteById(id);
     }
+    public List<Match> getAllByDate(LocalDate date){
+        return matchRepository.getAllByDate(date);
+    }
 
+    public List<Match> deletePastMatches() {
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+
+        List<Match> pastMatches = matchRepository.findAllByDateBeforeOrDateEqualsAndTimeBefore(currentDate,currentDate, currentTime);
+
+        matchRepository.deleteAll(pastMatches);
+        return pastMatches ;
+    }
 
 }

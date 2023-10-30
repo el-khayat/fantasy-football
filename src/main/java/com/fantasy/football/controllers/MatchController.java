@@ -20,16 +20,6 @@ public class MatchController {
      private final MatchService service ;
 
 
-    @GetMapping("/date")
-    private LocalDate getDate(){
-        LocalDate date =  LocalDate.of(2023,11,12) ;
-        return date;
-    }
-    @GetMapping("/time")
-    private LocalTime getTime(){
-        LocalTime time =  LocalTime.parse("10:10:10") ;
-        return time;
-    }
     @GetMapping()
     public List<Match> getAll(){
         return service.getAll() ;
@@ -67,4 +57,17 @@ public class MatchController {
         service.deleteById(id);
     }
 
+    @GetMapping("/date/{date}")
+    public List<Match> getAllByDate(@PathVariable LocalDate date){
+        System.out.println();
+        System.out.println("Fetching date ...");
+        System.out.println(date);
+        System.out.println();
+        System.out.println();
+        return service.getAllByDate(date);
+    }
+    @DeleteMapping("/deletepastmatches")
+    public List<Match> deletePastMatches() {
+        return service.deletePastMatches( );
+    }
 }

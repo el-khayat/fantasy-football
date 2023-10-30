@@ -40,5 +40,9 @@ public class TeamController {
     public void deleteById(@PathVariable Long id){
         service.deleteById(id);
     }
+    @GetMapping("/country/{country}")
+    public List<Team> getTeamByCountry(@PathVariable String country){
+        return  service.getTeamByCountry(country);
+    }
 
 }

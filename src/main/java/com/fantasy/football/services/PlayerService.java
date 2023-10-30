@@ -1,6 +1,7 @@
 package com.fantasy.football.services;
 
 import com.fantasy.football.entities.Player;
+import com.fantasy.football.entities.Team;
 import com.fantasy.football.repositories.PlayerRepositories;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,10 @@ public class PlayerService {
         playerRepositories.deleteById(id);
     }
 
-
+    public List<Player> getAllByTeam(Team team){
+        return playerRepositories.getAllByTeam(team);
+    }
+    public List<Player> getAllByTeamAndPost(Team team,String post){
+        return playerRepositories.getAllByTeamAndPost(team,post);
+    }
 }
