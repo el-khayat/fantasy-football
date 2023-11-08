@@ -1,2 +1,2 @@
 # fantasy-football
-test the github hook v2
+test the github hook
