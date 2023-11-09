@@ -18,6 +18,14 @@ public class Team {
     private String name ;
     private  String country ;
 
+    @OneToMany(mappedBy = "teamHome")
+            @JsonIgnore
+    List<Match> homeMatches ;
+
+    @OneToMany(mappedBy = "teamAway")
+            @JsonIgnore
+    List<Match> awayMatches ;
+
     @OneToMany(mappedBy = "team")
     @JsonIgnore
     private List<Player> players ;

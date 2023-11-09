@@ -18,8 +18,6 @@ import java.util.List;
 public class RefereeController {
 
     private final RefereeService service ;
-  
-
 
     @GetMapping()
     public List<Referee> getAll(){
@@ -34,7 +32,6 @@ public class RefereeController {
                          @RequestParam String name,
                          @RequestParam String nationalite 
                          ){
-
 
         Referee referee = new Referee(null,name,nationalite);
         return service.save(referee);
@@ -52,7 +49,5 @@ public class RefereeController {
     public void deleteById(@PathVariable Long idreferee){
         service.deleteById(idreferee);
     }
-
-
 
 }

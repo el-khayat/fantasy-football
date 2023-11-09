@@ -1,6 +1,7 @@
 
 package com.fantasy.football.services;
 
+import com.fantasy.football.entities.Match;
 import com.fantasy.football.entities.Stadium;
 import com.fantasy.football.repositories.StadiumRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,4 +30,8 @@ public class StadiumService {
     public void deleteById(Long idstadium){
         stadiumRepository.deleteById(idstadium);
     }
+    public Stadium getAllByMatch(Match match){
+        return stadiumRepository.getAllByMatch(match);
+    }
+
 }

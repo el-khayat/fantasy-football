@@ -1,12 +1,15 @@
 package com.fantasy.football.controllers;
 
+import com.fantasy.football.entities.Match;
 import com.fantasy.football.entities.Player;
 import com.fantasy.football.entities.Team;
+import com.fantasy.football.services.MatchService;
 import com.fantasy.football.services.PlayerService;
 import com.fantasy.football.services.TeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -15,6 +18,7 @@ import java.util.List;
 public class TeamController {
 
      private final TeamService service ;
+     private final MatchService matchService;
 
     @GetMapping()
     public List<Team> getAll(){
@@ -43,6 +47,14 @@ public class TeamController {
     @GetMapping("/country/{country}")
     public List<Team> getTeamByCountry(@PathVariable String country){
         return  service.getTeamByCountry(country);
+    }
+    @GetMapping("/match/{match_id}")
+    public List<Team> getTeamByMatch(@PathVariable Long match_id){
+        Match match = matchService.getOne(match_id);
+        List<Team> teams = new ArrayList<Team>();
+        teams.add(match.getTeamHome());
+        teams.add(match.getTeamAway());
+        return  teams;
     }
 
 }
