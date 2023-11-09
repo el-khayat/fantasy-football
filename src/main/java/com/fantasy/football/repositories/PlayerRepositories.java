@@ -9,4 +9,5 @@ import java.util.List;
 public interface PlayerRepositories extends JpaRepository<Player,Long> {
     List<Player> getAllByTeam(Team team);
     List<Player> getAllByTeamAndPost(Team team,String post);
+
 }
