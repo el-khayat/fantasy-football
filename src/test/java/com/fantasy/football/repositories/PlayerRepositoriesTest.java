@@ -40,7 +40,7 @@ class PlayerRepositoriesTest {
         // Assert
         assertAll(
                 () -> assertNotNull(foundPlayers),
-                () -> assertEquals(1, foundPlayers.size()),
+                () -> assertEquals(2, foundPlayers.size()),
                 () -> assertEquals("Brahim Nakach", foundPlayers.get(0).getName())
                 // add more assertions as needed based on your Player class
         );
